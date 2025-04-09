@@ -1,0 +1,79 @@
+{% extends "baseindex.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+		<!-- breadcrumb-section - start
+		================================================== -->
+		<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+			<div class="jarallax" style="background-image: url(static/assets/images/a3.jpg);">
+				<div class="overlay-black">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-6 col-md-12 col-sm-12">
+
+								<!-- breadcrumb-title - start -->
+								<div class="breadcrumb-title text-center mb-50">
+									<br><br>
+									<span class="sub-title">event gallery</span>
+									<h2 class="big-title">Amora <strong>gallery</strong></h2>
+								</div>
+								<!-- breadcrumb-title - end -->
+
+								<!-- breadcrumb-list - start -->
+								<div class="breadcrumb-list">
+									<ul>
+										<li class="breadcrumb-item"><a href="index-1.html" class="breadcrumb-link">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Amora gallery</li>
+									</ul>
+								</div>
+								<!-- breadcrumb-list - end -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb-section - end
+		================================================== -->
+		<div class="container">
+			<div class="row">
+			  {% for item in gallery %}
+				{% if item.image %}
+				  <a href="{{ item.image.url }}" data-toggle="lightbox" data-gallery="gallery" class="col-md-4 mb-4">
+					<img src="{{ item.image.url }}" class="img-fluid rounded">
+				  </a>
+				{% endif %}
+			  {% empty %}
+				<p class="text-center">No images found in the gallery.</p>
+			  {% endfor %}
+			</div>
+		  </div>
+		  <style>
+			.row {
+				margin: 15px;
+			  }
+			  @media (max-width: 767px) {
+				.row .col-12 {
+				  margin-bottom: 10px;
+				}
+			  }	
+		  </style>
+			<script>
+				$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+					event.preventDefault();
+					$(this).ekkoLightbox();
+				});
+			</script>
+
+		<!-- event-gallery-section - start
+		================================================== -->
+		
+		<!-- google map - end
+		================================================== -->
+
+
+		{% endblock %}

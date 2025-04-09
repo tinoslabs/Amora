@@ -1,0 +1,84 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+            <div class="col-lg-10 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Client Reviews</h4>
+                  <!-- <p class="card-description">
+                    Add class <code>.table-striped</code>
+                  </p> -->
+                  <div class="table-responsive">
+                    <div style="overflow-x: auto;">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Client Name
+                          </th>
+                          <th>
+                            Designation
+                          </th>
+                          <th>
+                            Review
+                          </th>
+                          <th>
+                            Client Image
+                          </th>
+                          <th>
+                            Update
+                          </th>
+                          
+                          <th>
+                            Delete
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for client_review in client_reviews %}
+                        <tr>
+                          <td style="width: 150px; ">
+                            {{ client_review.client_name }}
+                          </td>
+                          <td style="width: 150px; ">
+                            {{ client_review.designation }}
+                          </td>
+                          <td style="width: 500px; word-wrap: break-word; white-space: inherit; height: 200px; overflow: auto;">
+                            {{ client_review.review }}
+                        </td>
+                        
+                          <td style="width: 150px; ">
+                            {% if client_review.client_image %}
+                            <img src="{{ client_review.client_image.url }}" alt="Current Image" style="width: 80px; height: 80px;">
+                            <br>
+                            <!-- <input type="checkbox" name="remove_image"> Remove Current Image -->
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                          </td>
+                          
+                        
+                          <td style="width: 150px; ">
+                            <a href="{% url 'update_client_reviews' client_review.id  %}"><button><i class="mdi mdi-cloud-upload" aria-hidden="true"></i> </button></a>
+                            
+                          </td>
+                          <td style="width: 150px; ">
+                            <a href="{% url 'delete_client_review' client_review.id  %}"><button><i class="mdi mdi-delete" aria-hidden="true"></i> </button></a>
+                           
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        {% endblock %}

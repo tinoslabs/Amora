@@ -1,0 +1,68 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+            <div class="col-lg-11 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Client Logos</h4>
+               
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Company Name
+                          </th>
+                          
+                          <th>
+                            Company Logos
+                          </th>
+                       
+                          <th>
+                            Update
+                          </th>
+                          <th>
+                            Delete
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for company_logos in logo %}
+                        <tr>
+                          {% if company_logos.name %}
+                          <td style="width: 150px; ">
+                            {{ company_logos.name }}
+                          </td>
+                          {% else %}
+                          <td>data not found</td>
+                          {% endif %}
+                          <td style="width: 150px; ">
+                            {% if company_logos.logo %}
+                            <img src="{{ company_logos.logo.url }}" alt="Current Image" style="width: 80px; height: 80px;">
+                            <br>
+                            <!-- <input type="checkbox" name="remove_image"> Remove Current Image -->
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                        </td>
+                         
+                        <td style="width: 150px; ">
+                          <a href="{% url 'update_partners_logo' company_logos.id %}"><button><i class="mdi mdi-cloud-upload" aria-hidden="true"></i> </button></a>
+                        </td>
+                        <td style="width: 150px; ">
+                          <a href="{% url 'delete_partners_logo' company_logos.id %}"><button><i class="mdi mdi-delete" aria-hidden="true"></i> </button></a>
+                        </td>
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock %}

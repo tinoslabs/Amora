@@ -1,0 +1,223 @@
+{% extends "baseindex.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+		<!-- breadcrumb-section - start
+		================================================== -->
+		<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+			<div class="jarallax" style="background-image: url(static/assets/images/a3.jpg);">
+				<div class="overlay-black">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-6 col-md-12 col-sm-12">
+
+								<!-- breadcrumb-title - start -->
+								<div class="breadcrumb-title text-center mb-50">
+									<br>
+									<br>
+									<span class="sub-title">harmoni events</span>
+									<h2 class="big-title">harmoni <strong>event</strong></h2>
+								</div>
+								<!-- breadcrumb-title - end -->
+
+								<!-- breadcrumb-list - start -->
+								<div class="breadcrumb-list">
+									<ul>
+										<li class="breadcrumb-item"><a href="{% url 'index' %}" class="breadcrumb-link">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page">event listing</li>
+									</ul>
+								</div>
+								<!-- breadcrumb-list - end -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb-section - end
+		================================================== -->
+
+
+
+
+
+		<!-- event-search-section - start
+		================================================== -->
+		<section id="event-search-section" class="event-search-section clearfix" style="background-image: url(static/assets/images/a4.jpg);">
+			<div class="container">
+				<div class="row">
+
+					<!-- section-title - start -->
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="section-title">
+							<small class="sub-title">Find best event on Harmoni</small>
+							<h2 class="big-title">event <strong>Search</strong></h2>
+						</div>
+					</div>
+					<!-- section-title - end -->
+
+					
+					
+				</div>
+			</div>
+		</section>
+		<!-- event-search-section - end
+		================================================== -->
+
+
+
+
+
+		
+		<section id="event-section" class="event-section bg-gray-light sec-ptb-100 clearfix">
+			<div class="container">
+				<div class="row">
+				
+					<!-- Sidebar Section -->
+					<div class="col-lg-3 col-md-12 col-sm-12">
+						<div class="sidebar-section">
+		
+							<div title="Add to Calendar" class="addeventatc">
+								Add to Calendar
+								<span class="start">06/18/2025 09:00 AM</span>
+								<span class="end">06/18/2025 11:00 AM</span>
+								<span class="timezone">Europe/Paris</span>
+								<span class="title">Summary of the event</span>
+								<span class="description">Description of the event</span>
+								<span class="location">Location of the event</span>
+								<span class="organizer">Organizer</span>
+								<span class="organizer_email">Organizer e-mail</span>
+								<span class="all_day_event">false</span>
+								<span class="date_format">MM/DD/YYYY</span>
+							</div>
+		
+							<div class="map-wrapper mb-30">
+								<h2 class="title-small default-color mb-30">Google Map Search</h2>
+								<div id="google-map">
+									<div id="googleMaps" class="google-map-container"></div>
+								</div>
+							</div>
+		
+							<div class="spacial-event-wrapper text-center" style="background-image: url({% static 'assets/images/a5.jpg' %});">
+								<div class="overlay-black">
+									<p class="sub-title white-color mb-30">Amora</p>
+									<h2 class="title-large white-color mb-30">
+										AMSTERDAM
+										<strong class="yellow-color">Amora Events</strong>
+									</h2>
+									<a href="{% url 'contact' %}" class="custom-btn">Contact Us</a>
+								</div>
+							</div>
+		
+						</div>
+					</div>
+		
+					<!-- Event List Section -->
+					<div class="col-lg-9 col-md-12 col-sm-12">
+						{% if event %}
+							{% for ev in event %}
+							<a href="{% url 'event_details' ev.id %}" class="event-link" style="text-decoration: none; color: inherit;">
+								<div class="event-list-item clearfix mb-4">
+									
+									<!-- Event Image -->
+									<div class="event-image">
+										<div class="post-date">
+											<span class="date">
+												{% if ev.start_date %}
+													{{ ev.start_date|date:"d" }}
+												{% else %}
+													--
+												{% endif %}
+											</span>
+											<small class="month">
+												{% if ev.start_date %}
+													{{ ev.start_date|date:"F" }}
+												{% else %}
+													--
+												{% endif %}
+											</small>
+										</div>
+										{% if ev.event_image %}
+											<img src="{{ ev.event_image.url }}" alt="{{ ev.event_name|default:'No Image' }}">
+										{% else %}
+											<img src="{% static 'assets/images/default-placeholder.png' %}" alt="Image Not Found">
+										{% endif %}
+									</div>
+		
+									<!-- Event Content -->
+									<div class="event-content">
+										<div class="event-title mb-15">
+											<h3 class="title">
+												<strong>{{ ev.event_name|default:"Event Name Not Provided" }}</strong>
+											</h3>
+										</div>
+		
+										<p class="discription-text mb-30">
+											{% if ev.event_details %}
+												{{ ev.event_details|safe|truncatewords:20 }}
+											{% else %}
+												No description available.
+											{% endif %}
+										</p>
+		
+										<div class="event-info-list ul-li clearfix">
+											<ul>
+												<li>
+													<span class="icon">
+														<i class="fas fa-microphone"></i>
+													</span>
+													<div class="info-content">
+														<small>Team</small>
+														<h3>
+															{{ ev.team_name|default:"Team Not Assigned" }}
+														</h3>
+													</div>
+												</li>
+												<li>
+													<span class="icon">
+														<i class="fas fa-ticket-alt"></i>
+													</span>
+													<div class="info-content">
+														<small>Max Seats</small>
+														<h3>
+															{% if ev.seat_avilability %}
+																{{ ev.seat_avilability }} seats
+															{% else %}
+																Not specified
+															{% endif %}
+														</h3>
+													</div>
+												</li>
+												<li>
+													<span class="tickets-details-btn">
+														More Details
+													</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</a>
+							{% endfor %}
+						{% else %}
+							<p class="text-danger">No events found.</p>
+						{% endif %}
+					</div>
+		
+				</div>
+			</div>
+		</section>
+		
+		
+		<!-- event-section - end
+		================================================== -->
+
+
+
+
+
+		{% endblock %}

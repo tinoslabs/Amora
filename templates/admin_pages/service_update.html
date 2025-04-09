@@ -1,0 +1,73 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Service</h4>
+
+                    <form class="forms-sample" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="ServiceName">Service Name</label>
+                            <input type="text" class="form-control" id="ServiceName" name="service_name" placeholder="Service Name" value="{{ form.service_name.value|default_if_none:'' }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="main_image">Main Image</label>
+                            <input type="file" class="form-control" id="main_image" name="main_image">
+                            {% if form.instance.main_image %}
+                                <div class="mt-2">
+                                    <img src="{{ form.instance.main_image.url }}" alt="Current Image" class="img-thumbnail" style="max-width: 200px;">
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service_details">Description</label>
+                            <textarea class="form-control" name="service_details" id="service_details" rows="3" style="height: 150px;" placeholder="Enter Your Description">{{ form.service_details.value|default_if_none:'' }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                        <a href="{% url 'service_list' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CKEditor for Service Details -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#service_details'), {
+                toolbar: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'link', '|',
+                    'bulletedList', 'numberedList', 'blockQuote', '|',
+                    'insertTable', 'imageUpload', 'mediaEmbed', 'undo', 'redo'
+                ],
+                ckfinder: {
+                    uploadUrl: '{% url "ckeditor_upload" %}'
+                },
+                simpleUpload: {
+                    uploadUrl: '{% url "ckeditor_upload" %}',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+{% endblock %}

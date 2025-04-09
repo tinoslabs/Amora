@@ -1,0 +1,134 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Event</h4>
+
+                    {% comment %} <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="event_name">Event Name</label>
+                            {{ form.event_name }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event_details">Event Details</label>
+                            {{ form.event_details }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Event Date</label>
+                            {{ form.date }}
+                        </div>
+
+                        <div class="form-group">
+                          <label for="venue">Event Name</label>
+                          {{ form.venue }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event_video">Event Video</label>
+                            {{ form.event_video }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update Event</button>
+                        <a href="{% url 'event_list' %}" class="btn btn-secondary">Cancel</a>
+                    </form> {% endcomment %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    
+                        <div class="form-group">
+                            <label for="event_name">Event Name</label>
+                            {{ form.event_name }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="team_name">Team Name</label>
+                            {{ form.team_name }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="event_details">Event Details</label>
+                            {{ form.event_details }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            {{ form.start_date }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            {{ form.end_date }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="event_video">Event Video</label>
+                            {{ form.event_video }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="event_image">Event Image</label>
+                            {{ form.event_image }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="seat_avilability">Seat Availability</label>
+                            {{ form.seat_avilability }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="venue">Venue</label>
+                            {{ form.venue }}
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            {{ form.address }}
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Update Event</button>
+                        <a href="{% url 'event_list' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CKEditor for Event Details -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#id_event_details'), {
+                toolbar: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'link', '|',
+                    'bulletedList', 'numberedList', 'blockQuote', '|',
+                    'insertTable', 'imageUpload', 'mediaEmbed', 'undo', 'redo'
+                ],
+                ckfinder: {
+                    uploadUrl: '{% url "ckeditor_upload" %}'  // Ensure you have ckeditor_upload configured in urls.py
+                },
+                simpleUpload: {
+                    uploadUrl: '{% url "ckeditor_upload" %}',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+{% endblock %}

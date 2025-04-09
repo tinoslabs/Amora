@@ -1,0 +1,30 @@
+
+/* Logo transition for smooth scaling */
+.site-logo-wrapper .logo img {
+    transition: all 0.3s ease;
+    max-width: 130px; /* Default size */
+    height: auto;
+}
+
+/* Sticky header styles */
+.sticky-header-section.stuck {
+    position: fixed;
+    top: 0;
+    height: 17%;
+    width: 100%;
+    z-index: 999;
+    background-color: #878787;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    animation: slideDown 0.4s ease-out;
+}
+
+/* Smaller logo when stuck */
+.sticky-header-section.stuck .site-logo-wrapper .logo img {
+    max-width:85px !important;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+

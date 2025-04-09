@@ -1,0 +1,75 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Panelist</h4>
+
+                    <form class="forms-sample" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="name">Panelist Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" 
+                                   value="{{ form.name.value|default_if_none:'' }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Profile Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                            {% if panelist.image %}
+                                <br>
+                                <img src="{{ panelist.image.url }}" alt="Current Image" class="img-fluid rounded" width="150">
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="about">About Panelist</label>
+                            <textarea class="form-control" name="about" id="about" rows="3" 
+                                      style="height: 150px;" placeholder="Enter Panelist Details">{{ form.about.value|default_if_none:'' }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                        <a href="{% url 'panelist_list' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CKEditor for Service Details -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#about'), {
+                toolbar: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', 'link', '|',
+                    'bulletedList', 'numberedList', 'blockQuote', '|',
+                    'insertTable', 'imageUpload', 'mediaEmbed', 'undo', 'redo'
+                ],
+                ckfinder: {
+                    uploadUrl: '{% url "ckeditor_upload" %}'  // Make sure ckeditor_upload is correctly set in urls.py
+                },
+                simpleUpload: {
+                    uploadUrl: '{% url "ckeditor_upload" %}',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+{% endblock %}

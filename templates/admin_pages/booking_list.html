@@ -1,0 +1,56 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+            <div class="col-lg-11 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Bookings</h4>
+               
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Event Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            
+                            <th>Action</th>
+
+                 
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for data in booking %}
+                        <tr>
+                          <td style="width: 150px; ">
+                            {{ data.name }}
+                          </td>
+                          <td style="width: 150px; ">
+                            {{ data.event }}
+                          </td>
+                          
+                          <td style="width: 150px; ">
+                            {{ data.phone }}
+                          </td>
+                          <td style="width: 150px; ">
+                            {{ data.email }}
+                          </td>
+                          
+                        
+                          <td style="width: 600px; ">
+                            <a href="{% url 'delete_booking' data.id %}"><button><i class="mdi mdi-delete" aria-hidden="true"></i> </button></a> 
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,74 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+            <div class="col-lg-10 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Gallery List</h4>
+                 
+                  <div class="table-responsive">
+                    <div style="overflow-x: auto;">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Event Name
+                          </th>
+                          
+                          <th>
+                            gallery Image
+                          </th>
+                          <th>
+                            Date
+                          </th>
+                          <th>
+                            Update
+                          </th>
+                          <th>
+                            Delete
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for images in gallery %}
+                        <tr>
+                          <td style="width: 150px; ">
+                            {{ images.event_name }}
+                          </td>
+                          
+                          <td style="width: 150px; ">
+                            {% if images.image %}
+                            <img src="{{ images.image.url }}" alt="Current Image" style="width: 80px; height: 80px;">
+                            <br>
+                            <!-- <input type="checkbox" name="remove_image"> Remove Current Image -->
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                          </td>
+                          
+                          <td style="width: 500px; word-wrap: break-word; white-space: inherit; height: 200px; overflow: auto;">
+                            {{ images.date }}
+                        </td>
+                          <td style="width: 150px; ">
+                            <a href="{% url 'update_gallery' images.id %}"><button><i class="mdi mdi-cloud-upload" aria-hidden="true"></i> </button></a>
+                            
+                          </td>
+                          <td style="width: 150px; ">
+                            <a href="{% url 'delete_gallery' images.id %}"><button><i class="mdi mdi-delete" aria-hidden="true"></i> </button></a>
+                           
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        {% endblock %}

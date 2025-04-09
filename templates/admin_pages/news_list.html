@@ -1,0 +1,124 @@
+
+
+
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+/* Responsive CSS styles for the table */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black; /* Ensure all cells have borders */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+</style>
+
+<div class="col-lg-10 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">View News</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th> Title</th>
+                {% comment %} <th>News Details</th> {% endcomment %}
+                <th>Published Date</th>
+                
+                <th>News Image</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for news in news_list %}
+            <tr>
+              <td>{{ news.news_heading }}</td>
+              {% comment %} <td class="news-description">{{ news.news_details|safe }}</td> {% endcomment %}
+              <td>{{ news.date }}</td>
+              
+              <td>
+                {% if news.main_image %}
+                  <img src="{{ news.main_image.url }}" alt="News Image">
+                {% else %}
+                  No Image
+                {% endif %}
+              </td>
+              <td>
+                <a href="{% url 'edit_news' news.id %}" class="btn btn-primary btn-sm">
+                  <i class="mdi mdi-cloud-upload" aria-hidden="true"></i> Update
+                </a>
+                <a href="{% url 'delete_news' news.id %}" class="btn btn-danger btn-sm">
+                  <i class="mdi mdi-delete" aria-hidden="true"></i> Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .news-description {
+    max-width: 500px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media (max-width: 575.98px) {
+    .news-description {
+      max-width: 150px; /* Smaller width for smaller screens */
+    }
+  }
+</style>
+
+<style>
+  table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  table, th, td {
+      border: 1px solid black;
+  }
+  th, td {
+      padding: 8px;
+      text-align: left;
+  }
+  .table-responsive {
+      overflow-x: auto;
+  }
+
+  @media (max-width: 575.98px) {
+      .table-responsive {
+          overflow-x: auto;
+      }
+      .card-body td:nth-child(2) {
+          max-width: 150px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+  }
+</style>
+{% endblock %}

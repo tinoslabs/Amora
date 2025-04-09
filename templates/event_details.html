@@ -1,0 +1,996 @@
+{% extends "baseindex.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+		<!-- breadcrumb-section - start
+		================================================== -->
+		<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+			<div class="jarallax" style="background-image: url(static/assets/images/a3.jpg);">
+				<div class="overlay-black">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-6 col-md-12 col-sm-12">
+
+								<!-- breadcrumb-title - start -->
+								<div class="breadcrumb-title text-center mb-50">
+									<br>
+									<br>
+									<span class="sub-title">Amora</span>
+									<h2 class="big-title">Amora <strong>event</strong></h2>
+								</div>
+								<!-- breadcrumb-title - end -->
+
+								<!-- breadcrumb-list - start -->
+								<div class="breadcrumb-list">
+									<ul>
+										<li class="breadcrumb-item"><a href="{% url 'index' %}" class="breadcrumb-link">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page">event listing</li>
+									</ul>
+								</div>
+								<!-- breadcrumb-list - end -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb-section - end
+		================================================== -->
+
+
+
+
+
+		<!-- event-details-section - start
+		================================================== -->
+		<section id="event-details-section" class="event-details-section sec-ptb-100 clearfix">
+			<div class="container">
+				<div class="row">
+
+					<!-- col - event-details - start -->
+					<div class="col-lg-8 col-md-12 col-sm-12">
+
+						<!-- event-details - start -->
+						<div class="event-details mb-80">
+
+							<div class="event-title mb-30">
+								<span class="tag-item">
+									<i class="fas fa-bookmark"></i>
+									Featured Event
+								</span>
+								<h2 class="event-title">{{ event.event_name }}</h2>
+							</div>
+
+							<div id="event-details-carousel" class="event-details-carousel owl-carousel owl-theme">
+								<div class="item">
+									<img src="{{ event.event_image.url }}" alt="Image_not_found">
+								</div>	
+							</div>
+
+							<div class="event-info-list ul-li clearfix mb-50">
+								<ul>
+									<li>
+										<span class="icon">
+											<i class="far fa-calendar"></i>
+										</span>
+										<div class="event-content">
+											<small class="event-title">Event Date</small>
+											<h3 class="event-date">{{ event.start_date|date:"Y-m-d H:i" }}</h3>
+										</div>
+									</li>
+									<li>
+										<span class="icon">
+											<i class="far fa-clock"></i>
+										</span>
+										<div class="event-content">
+											<small class="event-title">Event Time</small>
+											<h3 class="event-date">15:00PM ~ 22:00PM</h3>
+										</div>
+									</li>
+									<li>
+										<span class="icon">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										<div class="event-content">
+											<small class="event-title">Event Location</small>
+											<h3 class="event-date">{{event.venue}}</h3>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<p class="black-color mb-30">
+								{{ event.event_details|safe }}
+							</p>
+
+							
+						</div>
+						<!-- event-details - end -->
+
+						<!-- event-schedule - start -->
+						<div class="event-schedule mb-80">
+
+							{% comment %} <div class="section-title text-left mb-30">
+								<h2 class="big-title">event <strong>schedule</strong></h2>
+							</div> {% endcomment %}
+
+							<!-- schedule-wrapper - start -->
+							<div class="schedule-wrapper">
+								
+								<div class="tab-content">
+									<!-- day 1 - start -->
+									<div id="day1" class="tab-pane fade in active show">
+										
+										<div class="tab-content">
+											
+
+											<div id="day1hall3" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day1hall4" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">02. say <strong>goodbye</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- day 1 - end -->
+
+									<!-- day 2 - start -->
+									<div id="day2" class="tab-pane fade">
+										<ul class="nav hotal-menu">
+											<li><a class="active" data-toggle="tab" href="#day2hall1"><i class="fas fa-arrow-circle-right"></i> vanila hall 1</a></li>
+											<li><a data-toggle="tab" href="#day2hall2"><i class="fas fa-arrow-circle-right"></i> vanila hall 2</a></li>
+											<li><a data-toggle="tab" href="#day2hall3"><i class="fas fa-arrow-circle-right"></i> vanila hall 3</a></li>
+											<li><a data-toggle="tab" href="#day2hall4"><i class="fas fa-arrow-circle-right"></i> vanila hall 4</a></li>
+										</ul>
+										<div class="tab-content">
+											<div id="day2hall1" class="tab-pane fade in active show">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. Greeting <strong>Welcome</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day2hall2" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. Greeting <strong>Welcome</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">02. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">03. say <strong>goodbye</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day2hall3" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}
+														" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day2hall4" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="assets/images/event/1.hall.png" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">02. say <strong>goodbye</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- day 2 - end -->
+
+									<!-- day 3 - start -->
+									<div id="day3" class="tab-pane fade">
+										<ul class="nav hotal-menu">
+											<li><a data-toggle="tab" href="#day3hall1"><i class="fas fa-arrow-circle-right"></i> vanila hall 1</a></li>
+											<li><a data-toggle="tab" href="#day3hall2"><i class="fas fa-arrow-circle-right"></i> vanila hall 2</a></li>
+											<li><a class="active" data-toggle="tab" href="#day3hall3"><i class="fas fa-arrow-circle-right"></i> vanila hall 3</a></li>
+											<li><a data-toggle="tab" href="#day3hall4"><i class="fas fa-arrow-circle-right"></i> vanila hall 4</a></li>
+										</ul>
+										<div class="tab-content">
+											<div id="day3hall1" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. Greeting <strong>Welcome</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day3hall2" class="tab-pane fade in active show">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. Greeting <strong>Welcome</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">02. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">03. say <strong>goodbye</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day3hall3" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div id="day3hall4" class="tab-pane fade">
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/2.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">01. learn <strong>drink wine</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="hall-item clearfix">
+													<div class="hall-image">
+														<img src="{% static 'assets/images/event/1.hall.png' %}" alt="Image_not_found">
+													</div>
+													<div class="hall-content">
+														<h3 class="event-title title-large mb-15">02. say <strong>goodbye</strong></h3>
+														<p class="mb-30 black-color">
+															Lorem ipsum dollor site amet the best  consectuer diam nerd adipiscing elites sed diam nonummy nibh the ebest uismod tincidunt ut laoreet dolore magna aliquam erat volutpat guild insignia the consectuer adipiscing elit. 
+														</p>
+														<div class="event-info-list ul-li clearfix">
+															<ul>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-microphone"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Speaker</small>
+																		<h3 class="event-date">jenny juis</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="fas fa-ticket-alt"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Max Seats</small>
+																		<h3 class="event-date">2,250 seats</h3>
+																	</div>
+																</li>
+																<li>
+																	<span class="icon">
+																		<i class="far fa-clock"></i>
+																	</span>
+																	<div class="event-content">
+																		<small class="event-title">Event Time</small>
+																		<h3 class="event-date">15~16pm</h3>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- day 3 - end -->
+								</div>
+							</div>
+							<!-- schedule-wrapper - end -->
+
+						</div>
+						
+
+					</div>
+					<!-- col - event-details - end -->
+
+					<!-- sidebar-section - start -->
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="sidebar-section">
+
+							
+							<!-- Add to Calendar - end -->
+
+							<!-- map-wrapper - start -->
+							<div class="map-wrapper mb-30">
+
+								<!-- section-title - start -->
+								<div class="section-title mb-30">
+									<h2 class="big-title">event <strong>location</strong></h2>
+								</div>
+								<!-- section-title - end -->
+
+								<div id="google-map">
+									<div id="googleMaps" class="google-map-container"></div>
+								</div>
+
+							</div>
+							<!-- map-wrapper - end -->
+
+							<!-- location-wrapper - start -->
+							<div class="location-wrapper mb-30">
+								<div class="title-wrapper">
+									<small class="up-arrow-icon">
+										<i class="fas fa-chevron-circle-up"></i>
+									</small>
+									<span class="icon">
+										<i class="fas fa-map-marker-alt"></i>
+									</span>
+									<div class="title-content">
+										<small>event location</small>
+										<h3>{{ event.venue }}</h3>
+									</div>
+								</div>
+								<div class="location-info-list ul-li-block clearfix">
+									<span class="area-name">{{ event.team_name }}</span>
+									<ul>
+										<li><i class="fas fa-arrow-circle-right"></i> {{ event.address }}</li>
+										<li><i class="fas fa-arrow-circle-right"></i> {{ event.venue }}</li>
+										<li><i class="fas fa-arrow-circle-right"></i> Thursday, December 26, 2018</li>
+										<li><i class="fas fa-arrow-circle-right"></i> From <strong>15.00 PM</strong> to <strong>20.00 PM</strong> (EST)</li>
+									</ul>
+								</div>
+								
+								
+							</div>
+							<!-- location-wrapper - end -->
+
+							<!-- faq-wrapper - start -->
+							
+							<!-- faq-wrapper - end -->
+
+							<!-- spacial-event-wrapper - start -->
+							{% comment %} <div class="spacial-event-wrapper text-center" style="background-image: url(assets/images/spacial-event-bg.jpg);">
+								<div class="overlay-black">
+									<p class="sub-title white-color mb-30">26 DECEMBER 2018</p>
+									<h2 class="title-large white-color mb-30">
+										AMSTERDAM
+										<strong class="yellow-color">PHP CONFERENCE</strong>
+									</h2>
+									<a href="#!" class="custom-btn">booking ticket</a>
+								</div>
+							</div> {% endcomment %}
+							<!-- spacial-event-wrapper - end -->
+							
+						</div>
+					</div>
+					<!-- sidebar-section - end -->
+					
+				</div>
+			</div>
+		</section>
+		<!-- event-details-section - end
+		================================================== -->
+
+
+
+
+
+		{% endblock %}
