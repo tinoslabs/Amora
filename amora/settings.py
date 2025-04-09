@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*b7l@1)^woq*$y!q*mikz4mn0e4qnl-!!3kjqehpt1hh*71w^5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['amora.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
